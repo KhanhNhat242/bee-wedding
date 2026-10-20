@@ -93,6 +93,10 @@ Chỉ 3 dịch vụ này. Không tự thêm dịch vụ khác (vd. quay phim, tr
 - Slogan: **"Bee Wedding – Ghi lại câu chuyện tình yêu theo cách riêng của bạn."**
 - Địa chỉ: Số 5 Nguyễn Du, P. Nam Định
 - Hotline: 0832571555 – 0979571555
+- Mô tả phim trường Bee House (bổ sung 20/10/2026, dùng ở section Về chúng tôi):
+  - Phim trường độc quyền tại Bee Wedding, nơi dâu rể có thể tìm thấy rất nhiều bối cảnh đẹp và khác biệt.
+  - Xây dựng theo hướng đa dạng concept: có nắng, có chiều sâu, có góc sáng nhẹ kiểu Hàn, có khu hiện đại – sang – tối giản… để mỗi cặp đôi đều chọn được vibe hợp với mình.
+  - Mỗi góc được làm kỹ từ ánh sáng đến bố cục, để khi dâu rể đứng vào là ảnh có "độ sâu" ngay, không bị phẳng hay đơn điệu như chụp phông trơn truyền thống.
 
 **Không có trong phiếu (KHÔNG được bịa):** bảng giá, giờ mở cửa, số năm kinh nghiệm, số cặp đôi đã phục vụ, đánh giá/testimonial, tên nhân sự, email, giải thưởng.
 → Chỗ cần giá dùng CTA "Liên hệ để nhận báo giá". Chỗ cần thông tin chưa có thì bỏ trống phần đó hoặc dùng placeholder đánh dấu `TODO(sale)` trong code — không hiển thị số liệu giả.

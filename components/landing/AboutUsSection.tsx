@@ -7,7 +7,7 @@ import { GALLERY_HASH_PREFIX } from './gallery-hash'
 const delay = (ms: number) => ({ '--reveal-delay': `${ms}ms` }) as CSSProperties
 
 // Section 2 — Về Bee Wedding & phim trường riêng Bee House (USP số 1). Bố cục so le 50/50.
-const BeeHouseSection = () => {
+const AboutUsSection = () => {
   const { main, inset } = beeHousePhotos
 
   return (
@@ -58,25 +58,18 @@ const BeeHouseSection = () => {
           </h2>
           <div className="space-y-5 leading-relaxed text-ink-soft">
             <p>
-              Bee House là phim trường riêng của Bee Wedding – không gian độc quyền, riêng tư để mỗi cặp đôi thoải
-              mái là chính mình trước ống kính.
+              Bee House là phim trường độc quyền của Bee Wedding – nơi dâu rể tìm thấy thật nhiều bối cảnh đẹp và
+              khác biệt.
             </p>
             <p>
-              Từ vòm cột, đài phun nước mang hơi thở cổ điển châu Âu đến khoảng vườn xanh tự nhiên, lãng mạn – tất
-              cả hội tụ trong một không gian, bạn không cần di chuyển xa vẫn có trọn bộ ảnh cưới như mong muốn.
+              Từng góc được chăm chút từ ánh sáng đến bố cục, để khi đứng vào khung hình là ảnh có “độ sâu” ngay –
+              không phẳng, không đơn điệu như chụp phông trơn truyền thống.
             </p>
           </div>
-          <a
-            href={`#${GALLERY_HASH_PREFIX}bee-house-outdoor`}
-            className="group mt-10 inline-flex items-center gap-3 border-b border-gold pb-1.5 text-sm font-medium tracking-[0.12em] text-gold-deep"
-          >
-            Tìm hiểu thêm về Bee House
-            <ArrowRightIcon width={16} height={16} className="transition-transform duration-300 group-hover:translate-x-1" />
-          </a>
         </div>
       </div>
     </section>
   )
 }
 
-export default BeeHouseSection
+export default AboutUsSection

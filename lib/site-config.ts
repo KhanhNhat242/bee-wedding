@@ -24,11 +24,10 @@ export const tel = (phone: string) => `tel:${phone}`
 
 // Menu landing page: neo tới các section. TODO: đổi sang /gioi-thieu, /catalog, /lien-he khi có trang riêng.
 export const navItems = [
-  { label: 'Bee House', href: '#bee-house' },
-  { label: 'Dịch vụ', href: '#dich-vu' },
-  { label: 'Bộ sưu tập', href: '#bo-suu-tap' },
-  { label: 'Khách hàng', href: '#khoanh-khac' },
-  { label: 'Liên hệ', href: '#lien-he' },
+  { label: 'Về chúng tôi', href: '#about-us' },
+  { label: 'Dịch vụ', href: '#service' },
+  { label: 'Bộ sưu tập', href: '#collection' },
+  { label: 'Liên hệ', href: '#contact-us' },
 ] as const
 
 export const services = [

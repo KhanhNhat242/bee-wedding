@@ -29,19 +29,12 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        solid ? 'glass-panel border-b border-line text-ink shadow-[0_8px_30px_-20px_rgba(43,38,32,0.35)]' : 'text-ivory'
-      }`}
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${solid ? 'glass-panel border-b border-line text-ink shadow-[0_8px_30px_-20px_rgba(43,38,32,0.35)]' : 'text-ivory'
+        }`}
     >
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-5 md:px-8">
-        <a href="#top" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <BrandMark size={44} />
-          <span className="leading-none">
-            <span className="block font-serif text-xl font-semibold tracking-[0.28em]">BEE WEDDING</span>
-            <span className={`mt-1 block text-[10px] tracking-[0.5em] ${solid ? 'text-gold-deep' : 'text-ivory/80'}`}>
-              STUDIO
-            </span>
-          </span>
+        <a href="#top" className="w-30 flex items-center gap-3" onClick={() => setOpen(false)}>
+          <BrandMark size={60} />
         </a>
 
         <nav aria-label="Điều hướng chính" className="hidden items-center gap-9 lg:flex">
@@ -60,11 +53,10 @@ const Header = () => {
         <div className="flex items-center gap-3">
           <a
             href={tel(hotline.value)}
-            className={`hidden items-center gap-2 border px-5 py-2.5 text-[13px] font-medium tracking-[0.12em] transition-colors duration-300 sm:flex ${
-              solid
-                ? 'border-gold text-gold-deep hover:bg-gold hover:text-ivory'
-                : 'border-ivory/60 hover:border-ivory hover:bg-ivory hover:text-ink'
-            }`}
+            className={`hidden items-center gap-2 border px-5 py-2.5 text-[13px] font-medium tracking-[0.12em] transition-colors duration-300 sm:flex ${solid
+              ? 'border-gold text-gold-deep hover:bg-gold hover:text-ivory'
+              : 'border-ivory/60 hover:border-ivory hover:bg-ivory hover:text-ink'
+              }`}
           >
             <PhoneIcon width={16} height={16} />
             {hotline.display}
@@ -83,9 +75,8 @@ const Header = () => {
 
       {/* Menu mobile */}
       <div
-        className={`fixed inset-x-0 top-18 bottom-0 bg-ivory transition-all duration-500 lg:hidden ${
-          open ? 'visible opacity-100' : 'invisible opacity-0'
-        }`}
+        className={`fixed inset-x-0 top-18 bottom-0 bg-ivory transition-all duration-500 lg:hidden ${open ? 'visible opacity-100' : 'invisible opacity-0'
+          }`}
       >
         <nav aria-label="Điều hướng mobile" className="flex h-full flex-col items-center justify-center gap-7 pb-20">
           {navItems.map((item, i) => (
@@ -93,9 +84,8 @@ const Header = () => {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className={`font-serif text-3xl text-ink transition-all duration-500 ${
-                open ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-              }`}
+              className={`font-serif text-3xl text-ink transition-all duration-500 ${open ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+                }`}
               style={{ transitionDelay: open ? `${120 + i * 60}ms` : '0ms' }}
             >
               {item.label}

@@ -6,10 +6,11 @@ import { site } from '@/lib/site-config'
 
 const delay = (ms: number) => ({ '--hero-delay': `${ms}ms` }) as CSSProperties
 
-// Màn hình đầu: dải ảnh đa khung theo tinh thần banner "PREMIUM Collection", vừa đúng 1 màn hình.
+// Màn hình đầu: dải ảnh đa khung theo tinh thần banner "PREMIUM Collection".
+// Cao bằng 1 màn hình nhưng tối đa 56rem (896px): màn hình lớn không bị hero chiếm quá nhiều, section sau lộ ra phía dưới.
 const Hero = () => {
   return (
-    <section id="top" className="relative h-svh min-h-150 overflow-hidden bg-ink">
+    <section id="top" className="relative h-svh max-h-224 min-h-150 overflow-hidden bg-ink">
       {/* Chỉ ảnh chính của mỗi bố cục tải eager; còn lại lazy nên bố cục bị ẩn theo breakpoint không tải ảnh */}
       {/* Desktop / tablet: dải khung ảnh dọc, khung giữa nằm sau khối chữ */}
       <div className="absolute inset-0 hidden gap-1.5 bg-ivory md:flex">
@@ -58,10 +59,6 @@ const Hero = () => {
       <div className="absolute inset-0 bg-linear-to-b from-ink/55 via-transparent to-ink/60" />
 
       <div className="relative flex h-full flex-col items-center justify-center px-6 pt-10 text-center text-ivory">
-        <div className="hero-text" style={delay(500)}>
-          <BrandMark size={92} preload className="shadow-[0_0_0_6px_rgba(255,253,249,0.12)]" />
-        </div>
-
         <h1 className="hero-text mt-8" style={delay(700)}>
           <span className="block font-serif text-[2.6rem] leading-none font-medium tracking-[0.14em] whitespace-nowrap sm:text-6xl sm:tracking-[0.22em] lg:text-7xl xl:text-8xl">
             BEE WEDDING
@@ -79,34 +76,7 @@ const Hero = () => {
         >
           {site.slogan}
         </p>
-
-        <div className="hero-text mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4" style={delay(1100)}>
-          <a
-            href="#bo-suu-tap"
-            className="bg-gold px-9 py-4 text-[13px] font-medium tracking-[0.2em] text-ivory uppercase transition-colors duration-300 hover:bg-gold-deep"
-          >
-            Khám phá bộ sưu tập
-          </a>
-          <a
-            href="#lien-he"
-            className="border border-ivory/70 px-9 py-4 text-[13px] font-medium tracking-[0.2em] uppercase backdrop-blur-sm transition-colors duration-300 hover:bg-ivory hover:text-ink"
-          >
-            Liên hệ tư vấn
-          </a>
-        </div>
       </div>
-
-      <a
-        href="#bee-house"
-        aria-label="Cuộn xuống"
-        className="hero-text absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center gap-3 text-[10px] tracking-[0.4em] text-ivory/70 uppercase"
-        style={delay(1400)}
-      >
-        Cuộn xuống
-        <span className="relative h-12 w-px overflow-hidden bg-ivory/25">
-          <span className="scroll-cue absolute inset-0 bg-gold" />
-        </span>
-      </a>
     </section>
   )
 }
