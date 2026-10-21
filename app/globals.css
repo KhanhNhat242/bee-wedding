@@ -59,6 +59,28 @@ body {
 /* Không đặt màu viền toàn cục cho `*`: rule ngoài layer sẽ đè mọi class border-* của Tailwind
    (và Tailwind 4 bỏ wrapper @layer base của rule này khi biên dịch). Luôn ghi rõ màu: border-line / border-gold. */
 
+/* Chuyển tiếp giữa 2 section: section dưới mở đầu bằng gradient từ màu nền section trên.
+   Chỉ là background-image (nằm dưới nội dung) nên không đè chữ. Dùng kèm bg-ivory / bg-beige. */
+@layer components {
+  .fade-from-ivory {
+    background-image: linear-gradient(to bottom, var(--ivory), transparent 10rem);
+  }
+
+  .fade-from-beige {
+    background-image: linear-gradient(to bottom, var(--beige), transparent 10rem);
+  }
+
+  @media (min-width: 1024px) {
+    .fade-from-ivory {
+      background-image: linear-gradient(to bottom, var(--ivory), transparent 14rem);
+    }
+
+    .fade-from-beige {
+      background-image: linear-gradient(to bottom, var(--beige), transparent 14rem);
+    }
+  }
+}
+
 /* Nhịp section chuẩn: mobile 80px, desktop 112px (brief: 64–80 / 96–120) */
 .section {
   padding-block: 5rem;

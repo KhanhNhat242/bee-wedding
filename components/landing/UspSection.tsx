@@ -20,7 +20,7 @@ const rows = [
 // Section 5 — 4 điểm khác biệt dạng bento, ảnh làm nền từng thẻ.
 const UspSection = () => {
   return (
-    <section id="why-us" className="section relative bg-beige">
+    <section id="why-us" className="section fade-from-ivory relative bg-beige">
       <SideOrnaments variant="usp" />
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHeading title="Vì Sao Chọn Bee Wedding" />

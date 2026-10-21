@@ -89,7 +89,7 @@ const GallerySection = () => {
   const close = useCallback(() => setActive(null), [])
 
   return (
-    <section id="collection" ref={sectionRef} className="section relative bg-ivory">
+    <section id="collection" ref={sectionRef} className="section fade-from-beige relative bg-ivory">
       <SideOrnaments variant="gallery" />
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHeading title="Bộ Sưu Tập Nổi Bật" />

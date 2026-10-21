@@ -11,7 +11,7 @@ type Props = {
 const BrandMark = ({ size, className = '', preload = false }: Props) => {
   return (
     <span
-      className={`relative block shrink-0 overflow-hidden rounded-full ring-1 ring-gold/40 ${className}`}
+      className={`relative block shrink-0 overflow-hidden rounded-full ${className}`}
       style={{ width: size, height: size }}
     >
       <Image

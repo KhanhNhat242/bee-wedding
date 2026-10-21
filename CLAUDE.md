@@ -41,7 +41,7 @@ Website demo cho studio ảnh cưới **Bee Wedding** (Nam Định). Mọi việ
 - Thứ tự layer CSS giữ nguyên: `@layer theme, base, antd, components, utilities;`.
 - Không viết rule toàn cục ngoài layer kiểu `* { border-color: ... }` — nó đè mọi utility Tailwind. Mỗi `border` phải kèm class màu (`border-line`, `border-gold`…).
 - Màu dùng qua class token Tailwind: `bg-ivory`, `bg-beige`, `text-ink`, `text-ink-soft`, `text-gold`, `text-gold-deep` (chữ nhỏ màu vàng dùng `gold-deep` để đủ tương phản), `border-line`.
-- Khoảng cách section dùng class `.section` (80px mobile / 112px desktop); tiêu đề → nội dung dùng `SectionHeading` (mb-10/12). Nền section luân phiên ngà / be.
+- Khoảng cách section dùng class `.section` (80px mobile / 112px desktop); tiêu đề → nội dung dùng `SectionHeading` (mb-10/12). Nền section luân phiên ngà / be. Chuyển tiếp giữa 2 section (trừ Hero, Footer): section dưới thêm class `fade-from-ivory` / `fade-from-beige` theo màu nền section trên; section có ảnh nền thì dùng 1 lớp `bg-linear-to-b from-<màu trên> to-transparent` ở đỉnh. Đổi thứ tự section thì cập nhật lại các class này.
 - Ảnh hero: không dùng `priority` (deprecated ở Next 16) — dùng `fetchPriority` / `preload`.
 - Hoạ tiết hai bên section dùng `<SideOrnaments variant="..." />` (section cha cần `relative`; Hero không có). Section mới thì thêm variant line-art liên quan nội dung, nét vàng mảnh.
 - `RevealObserver` đặt ở **cuối mỗi page**, không đặt trong layout (tránh hydration mismatch).

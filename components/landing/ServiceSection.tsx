@@ -8,7 +8,7 @@ import { services } from '@/lib/site-config'
 // Section 3 — 3 dịch vụ chính, lưới 3 card dọc 3:4: ảnh làm nền, chữ đè ở phần dưới. Không hiển thị giá (CLAUDE.md mục 1).
 const ServiceSection = () => {
   return (
-    <section id="service" className="section relative bg-beige">
+    <section id="service" className="section fade-from-ivory relative bg-beige">
       <SideOrnaments variant="service" />
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHeading title="Dịch Vụ Của Bee Wedding" />
