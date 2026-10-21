@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import SectionHeading from '../SectionHeading'
+import SideOrnaments from '../SideOrnaments'
 import Lightbox, { type LightboxItem } from '../Lightbox'
 import { getAlbum } from '@/lib/albums'
 import { galleryTabs } from '@/lib/landing-photos'
@@ -88,9 +89,10 @@ const GallerySection = () => {
   const close = useCallback(() => setActive(null), [])
 
   return (
-    <section id="bo-suu-tap" ref={sectionRef} className="section bg-ivory">
+    <section id="collection" ref={sectionRef} className="section relative bg-ivory">
+      <SideOrnaments variant="gallery" />
       <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <SectionHeading eyebrow="Khoảnh khắc & Cảm xúc" title="Bộ Sưu Tập Nổi Bật" />
+        <SectionHeading title="Bộ Sưu Tập Nổi Bật" />
 
         <div
           role="tablist"
@@ -107,11 +109,10 @@ const GallerySection = () => {
                 role="tab"
                 aria-selected={selected}
                 onClick={() => selectTab(t.key)}
-                className={`shrink-0 border px-5 py-2.5 text-[12px] font-medium tracking-[0.18em] uppercase transition-colors duration-300 ${
-                  selected
+                className={`shrink-0 border px-5 py-2.5 text-[12px] font-medium tracking-[0.18em] uppercase transition-colors duration-300 ${selected
                     ? 'border-gold bg-gold text-ivory'
                     : 'border-line text-ink-soft hover:border-gold hover:text-gold-deep'
-                }`}
+                  }`}
               >
                 {t.label}
               </button>

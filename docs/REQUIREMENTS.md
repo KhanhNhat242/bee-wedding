@@ -174,13 +174,13 @@ Chỉ 3 dịch vụ này. Không tự thêm dịch vụ khác (vd. quay phim, tr
 
 | # | Section | Bố cục | Nền | Giới hạn chữ |
 |---|---|---|---|---|
-| 1 | Hero | Dải 5 khung ảnh (desktop) / trình chiếu (mobile), logo monogram, vừa 1 màn hình | ảnh | 15–25 từ |
+| 1 | Hero | Slider 4 ảnh `banner1–4.jpg`: chuyển cảnh trượt + Ken Burns, tự chạy 6s, tab số kèm thanh tiến trình, nút ←/→, vuốt trên mobile. Desktop (≥1024px) cao 1 màn hình nhưng tối đa 896px; mobile/tablet 78–82svh, tối đa 680px | ảnh | mỗi slide ~10 từ |
 | 2 | Bee House | Split 50/50: ảnh Bee House + khối chữ nền be, link "Tìm hiểu thêm về Bee House →" | ngà | 60–80 từ |
 | 3 | 3 dịch vụ | Lưới 3 card, ảnh 3:4, tiêu đề serif hoa, nút "Nhận báo giá chi tiết" | be | 30–40 từ/card |
 | 4 | Bộ sưu tập | Masonry + tab: Tất cả / New Concept 2026 / Modern & Romantic / Bee House Outdoor; hover zoom + tên concept | ngà | < 20 từ |
 | 5 | 4 USP | Thanh 4 cột, số La Mã I–IV vàng | be | 10–15 từ/cột |
 | 6 | Khoảnh khắc khách hàng | Dải ảnh trượt vô tận | ngà | 20–30 từ |
-| 7 | Liên hệ | 2 cột: thông tin + form (Họ tên, SĐT, Ngày dự kiến cưới); nút Gọi ngay / Nhắn Zalo / Mở chỉ đường | be + ảnh mờ | 35–50 từ |
+| 7 | Liên hệ | Tiêu đề + Hotline (link `tel:`) + Địa chỉ (link Google Maps) ở cột trái; nền `contact-banner.jpg` gradient phải → trái; desktop cao 1 màn hình nhưng tối đa 896px. Đã bỏ form và các nút (21/10/2026) | ảnh + be | 35–50 từ |
 
 - Khoảng cách section: mobile 80px, desktop 112px (brief: 64–80 / 96–120). Tiêu đề → nội dung 40–48px.
 - Font: Cormorant Garamond (tiêu đề) + Be Vietnam Pro (nội dung), đều có subset tiếng Việt.
@@ -226,3 +226,4 @@ Giỏ hàng, thanh toán, đặt lịch online, đăng nhập/tài khoản, bả
 |---|---|
 | 20/10/2026 | Tạo tài liệu từ Phiếu DEV 27 |
 | 20/10/2026 | Thêm brief landing page (mục 9.6) và triển khai trang `/` |
+| 21/10/2026 | Hero đổi sang slider 4 banner (banner1–4.jpg) |

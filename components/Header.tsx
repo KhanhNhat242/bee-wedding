@@ -5,13 +5,33 @@ import BrandMark from './BrandMark'
 import { CloseIcon, MenuIcon, PhoneIcon } from './Icons'
 import { navItems, site, tel } from '@/lib/site-config'
 
+// Section không có trên menu: khi đang xem các section này thì không mục nào active.
+const UNLISTED_SECTIONS = ['#why-us']
+
 // Header trong suốt khi nằm trên hero, chuyển sang nền ngà mờ khi cuộn xuống.
 const Header = () => {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [active, setActive] = useState<string | null>(null)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
+    // Mục active = section cuối cùng có mép trên đã qua 35% màn hình; chạm đáy trang thì là mục cuối.
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40)
+      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2
+      // Section gần nhất đã qua mốc (so theo vị trí thật, không theo thứ tự mảng)
+      let current: string | null = null
+      let currentTop = -Infinity
+      for (const href of [...navItems.map((item) => item.href), ...UNLISTED_SECTIONS]) {
+        const top = document.getElementById(href.slice(1))?.getBoundingClientRect().top
+        if (top !== undefined && top <= window.innerHeight * 0.35 && top > currentTop) {
+          current = href
+          currentTop = top
+        }
+      }
+      if (current && UNLISTED_SECTIONS.includes(current)) current = null
+      setActive(atBottom ? navItems[navItems.length - 1].href : current)
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -29,7 +49,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${solid ? 'glass-panel border-b border-line text-ink shadow-[0_8px_30px_-20px_rgba(43,38,32,0.35)]' : 'text-ivory'
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${solid ? 'glass-panel text-ink shadow-[0_8px_30px_-20px_rgba(43,38,32,0.35)]' : 'text-ivory'
         }`}
     >
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-5 md:px-8">
@@ -38,16 +58,26 @@ const Header = () => {
         </a>
 
         <nav aria-label="Điều hướng chính" className="hidden items-center gap-9 lg:flex">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="group relative py-2 text-[13px] font-medium tracking-[0.18em] uppercase"
-            >
-              {item.label}
-              <span className="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-gold transition-transform duration-500 group-hover:scale-x-100" />
-            </a>
-          ))}
+          {navItems.map((item) => {
+            const isActive = active === item.href
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                aria-current={isActive ? 'location' : undefined}
+                className={`group relative py-2 text-[13px] font-medium tracking-[0.18em] uppercase transition-colors duration-300 ${
+                  isActive ? (solid ? 'text-gold-deep' : 'text-gold') : ''
+                }`}
+              >
+                {item.label}
+                <span
+                  className={`absolute inset-x-0 -bottom-0.5 h-px origin-left bg-gold transition-transform duration-500 group-hover:scale-x-100 ${
+                    isActive ? 'scale-x-100' : 'scale-x-0'
+                  }`}
+                />
+              </a>
+            )
+          })}
         </nav>
 
         <div className="flex items-center gap-3">
@@ -84,7 +114,8 @@ const Header = () => {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className={`font-serif text-3xl text-ink transition-all duration-500 ${open ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              aria-current={active === item.href ? 'location' : undefined}
+              className={`font-serif text-3xl transition-all duration-500 ${active === item.href ? 'text-gold-deep' : 'text-ink'} ${open ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
                 }`}
               style={{ transitionDelay: open ? `${120 + i * 60}ms` : '0ms' }}
             >

@@ -1,24 +1,30 @@
 import Image from 'next/image'
-import ContactForm from './ContactForm'
 import { MapPinIcon, PhoneIcon } from '../Icons'
+import SideOrnaments from '../SideOrnaments'
 import { contactBackdrop } from '@/lib/landing-photos'
 import { site, tel } from '@/lib/site-config'
 
-// Section 7 — Thông tin liên hệ + form nhận tư vấn, nền be với ảnh mờ nghệ thuật phía sau.
+// Section 7 — Thông tin liên hệ trên nền ảnh showroom; gradient phải → trái chuyển ảnh sang cột chữ bên trái.
+// Desktop cao 1 màn hình nhưng tối đa 56rem (896px), giống Hero.
 const ContactSection = () => {
   return (
-    <section id="lien-he" className="section relative overflow-hidden bg-beige">
+    <section
+      id="contact-us"
+      className="relative flex min-h-[80svh] items-end overflow-hidden bg-beige md:items-center lg:h-svh lg:max-h-224 lg:min-h-150"
+    >
       <Image
         src={contactBackdrop.src}
-        alt=""
+        alt="Showroom váy cưới Bee Wedding"
         fill
         sizes="100vw"
-        className="object-cover opacity-20 blur-[2px] grayscale-[30%]"
+        className="object-cover object-right"
       />
-      <div className="absolute inset-0 bg-linear-to-b from-beige via-beige/70 to-beige" />
+      {/* Mobile: tối dần từ dưới lên vì chữ nằm dưới; từ md: chuyển từ phải (ảnh) sang trái (nền be) */}
+      <div className="absolute inset-0 bg-linear-to-t from-beige via-beige/85 via-45% to-beige/10 md:bg-linear-to-l md:from-beige/0 md:via-beige/75 md:via-50% md:to-beige" />
+      <SideOrnaments variant="contact" />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 md:px-8 lg:grid-cols-2 lg:gap-20">
-        <div data-reveal="left">
+      <div className="relative mx-auto w-full max-w-7xl px-5 py-20 md:px-8 lg:py-0">
+        <div data-reveal="left" className="max-w-md">
           <p className="flex items-center gap-4 text-xs font-medium tracking-[0.35em] text-gold-deep uppercase">
             <span className="h-px w-10 bg-gold" />
             Liên hệ
@@ -27,23 +33,19 @@ const ContactSection = () => {
             Liên Hệ Tư Vấn
           </h2>
 
-          <dl className="space-y-6">
-            <div className="flex gap-4">
-              <MapPinIcon className="mt-0.5 shrink-0 text-gold" />
-              <div>
-                <dt className="text-xs tracking-[0.25em] text-ink-soft uppercase">Địa chỉ</dt>
-                <dd className="mt-1 text-lg text-ink">{site.address}</dd>
-              </div>
-            </div>
+          <dl className="space-y-7">
             <div className="flex gap-4">
               <PhoneIcon className="mt-0.5 shrink-0 text-gold" />
               <div>
                 <dt className="text-xs tracking-[0.25em] text-ink-soft uppercase">Hotline / Zalo</dt>
-                <dd className="mt-1 text-lg text-ink">
-                  {site.hotlines.map((h, i) => (
+                <dd className="mt-1.5 text-lg text-ink md:text-xl">
+                  <a href={tel(site.hotlines[0].value)} className="transition-colors hover:text-gold-deep">
+                    {site.hotlines[0].display}
+                  </a>
+                  {site.hotlines.slice(1).map((h) => (
                     <span key={h.value}>
-                      {i > 0 && <span className="mx-2 text-gold">–</span>}
-                      <a href={tel(h.value)} className="hover:text-gold-deep">
+                      <span className="mx-2 text-gold">–</span>
+                      <a href={tel(h.value)} className="transition-colors hover:text-gold-deep">
                         {h.display}
                       </a>
                     </span>
@@ -51,38 +53,23 @@ const ContactSection = () => {
                 </dd>
               </div>
             </div>
+            <div className="flex gap-4">
+              <MapPinIcon className="mt-0.5 shrink-0 text-gold" />
+              <div>
+                <dt className="text-xs tracking-[0.25em] text-ink-soft uppercase">Địa chỉ</dt>
+                <dd className="mt-1.5 text-lg text-ink md:text-xl">
+                  <a
+                    href={site.maps}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="border-b border-gold/50 pb-0.5 transition-colors hover:border-gold hover:text-gold-deep"
+                  >
+                    {site.address}
+                  </a>
+                </dd>
+              </div>
+            </div>
           </dl>
-
-          <div className="mt-10 grid gap-3 sm:grid-cols-3">
-            <a
-              href={tel(site.hotlines[0].value)}
-              className="bg-gold px-4 py-3.5 text-center text-[13px] font-medium tracking-[0.16em] text-ivory uppercase transition-colors hover:bg-gold-deep"
-            >
-              Gọi ngay
-            </a>
-            <a
-              href={site.zalo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-gold px-4 py-3.5 text-center text-[13px] font-medium tracking-[0.16em] text-gold-deep uppercase transition-colors hover:bg-gold hover:text-ivory"
-            >
-              Nhắn Zalo
-            </a>
-            <a
-              href={site.maps}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-gold px-4 py-3.5 text-center text-[13px] font-medium tracking-[0.16em] text-gold-deep uppercase transition-colors hover:bg-gold hover:text-ivory"
-            >
-              Mở chỉ đường
-            </a>
-          </div>
-        </div>
-
-        <div data-reveal="right" className="bg-ivory p-7 shadow-[0_40px_80px_-50px_rgba(43,38,32,0.55)] sm:p-10">
-          <h3 className="font-serif text-3xl font-medium text-ink">Đăng ký nhận tư vấn</h3>
-          <p className="mt-2 mb-8 text-[15px] text-ink-soft">Để lại thông tin, Bee Wedding sẽ liên hệ lại với bạn.</p>
-          <ContactForm />
         </div>
       </div>
     </section>

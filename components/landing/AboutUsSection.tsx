@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import SideOrnaments from '../SideOrnaments'
 import type { CSSProperties } from 'react'
 import { ArrowRightIcon } from '../Icons'
 import { beeHousePhotos } from '@/lib/landing-photos'
@@ -11,7 +12,8 @@ const AboutUsSection = () => {
   const { main, inset } = beeHousePhotos
 
   return (
-    <section id="bee-house" className="section bg-ivory">
+    <section className="section relative bg-ivory">
+      <SideOrnaments variant="about" />
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 md:px-8 lg:grid-cols-2 lg:gap-0">
         {/* Ảnh không gian Bee House */}
         <div className="relative lg:pr-16 lg:pb-16">
@@ -47,14 +49,13 @@ const AboutUsSection = () => {
         </div>
 
         {/* Khối chữ nền be */}
-        <div data-reveal="right" className="bg-beige px-7 py-12 sm:px-12 lg:-ml-8 lg:px-16 lg:py-20">
+        <div id="about-us" data-reveal="right" className="bg-beige px-7 py-12 sm:px-12 lg:-ml-8 lg:px-16 lg:py-20">
           <p className="flex items-center gap-4 text-xs font-medium tracking-[0.35em] text-gold-deep uppercase">
             <span className="h-px w-10 bg-gold" />
             Về Bee Wedding
           </p>
           <h2 className="mt-4 mb-10 font-serif text-4xl leading-tight font-medium text-ink md:mb-12 md:text-5xl">
             Phim trường Bee House
-            <span className="mt-2 block text-2xl text-gold-deep italic md:text-3xl">Không gian độc quyền</span>
           </h2>
           <div className="space-y-5 leading-relaxed text-ink-soft">
             <p>

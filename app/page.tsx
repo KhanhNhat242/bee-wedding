@@ -1,5 +1,5 @@
 import Hero from '@/components/landing/Hero'
-import ServicesSection from '@/components/landing/ServicesSection'
+import ServiceSection from '@/components/landing/ServiceSection'
 import GallerySection from '@/components/landing/GallerySection'
 import UspSection from '@/components/landing/UspSection'
 import ContactSection from '@/components/landing/ContactSection'
@@ -13,7 +13,7 @@ const Home = () => {
     <>
       <Hero />
       <AboutUsSection />
-      <ServicesSection />
+      <ServiceSection />
       <GallerySection />
       <UspSection />
       <ContactSection />

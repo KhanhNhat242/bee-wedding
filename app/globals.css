@@ -44,6 +44,18 @@ body {
   overflow-x: clip;
 }
 
+/* Tránh chữ "mồ côi" (một từ rớt xuống dòng cuối): tiêu đề chia đều các dòng, đoạn văn ngắt dòng đẹp.
+   Đặt trong layer components (Tailwind giữ được layer này) để class text-wrap của Tailwind vẫn ghi đè được. */
+@layer components {
+  :where(h1, h2, h3, h4, blockquote) {
+    text-wrap: balance;
+  }
+
+  :where(p, li, dd, figcaption) {
+    text-wrap: pretty;
+  }
+}
+
 /* Không đặt màu viền toàn cục cho `*`: rule ngoài layer sẽ đè mọi class border-* của Tailwind
    (và Tailwind 4 bỏ wrapper @layer base của rule này khi biên dịch). Luôn ghi rõ màu: border-line / border-gold. */
 
@@ -168,111 +180,32 @@ body {
   animation: lightbox-fade 0.3s ease-out;
 }
 
-/* Hero: các khung ảnh dâng lên lần lượt khi vào trang */
-@keyframes hero-rise {
-  from {
-    opacity: 0;
-    clip-path: inset(100% 0 0 0);
+/* Thẻ USP dạng bento: lớn 3 phần – nhỏ 2 phần.
+   Rê chuột vào thẻ nhỏ → thẻ nhỏ giãn bằng thẻ lớn, thẻ lớn co bằng thẻ nhỏ (chỉ desktop có chuột). */
+@media (min-width: 768px) {
+  .usp-card {
+    flex: 3 1 0%;
+    min-width: 0;
+    /* Giữ cả transition của data-reveal (opacity/transform), nếu không sẽ bị rule này đè mất */
+    transition:
+      flex-grow 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.8s ease,
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  to {
-    opacity: 1;
-    clip-path: inset(0 0 0 0);
-  }
-}
-
-.hero-panel {
-  animation: hero-rise 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
-  animation-delay: var(--hero-delay, 0ms);
-}
-
-/* Ảnh hero phóng chậm (Ken Burns) để màn hình đầu luôn "thở" */
-@keyframes hero-drift {
-  from {
-    transform: scale(1.12);
-  }
-
-  to {
-    transform: scale(1);
+  .usp-card[data-size='small'] {
+    flex-grow: 2;
   }
 }
 
-.hero-drift {
-  animation: hero-drift 9s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-/* Hero mobile: 4 ảnh mờ dần nối tiếp nhau, mỗi ảnh 5s */
-@keyframes hero-slide {
-  0% {
-    opacity: 0;
-    transform: scale(1.08);
+@media (min-width: 768px) and (hover: hover) {
+  .usp-row:has(> [data-size='small']:hover) > [data-size='large'] {
+    flex-grow: 2;
   }
 
-  6% {
-    opacity: 1;
+  .usp-row > [data-size='small']:hover {
+    flex-grow: 3;
   }
-
-  25% {
-    opacity: 1;
-  }
-
-  31% {
-    opacity: 0;
-    transform: scale(1);
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-
-.hero-slide {
-  animation: hero-slide 20s linear infinite both;
-  animation-delay: var(--slide-delay, 0s);
-}
-
-/* Chữ hero hiện sau khi ảnh đã lên */
-@keyframes hero-text {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-.hero-text {
-  animation: hero-text 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
-  animation-delay: var(--hero-delay, 0ms);
-}
-
-/* Gợi ý cuộn: vạch vàng chạy dọc */
-@keyframes scroll-cue {
-  0% {
-    transform: scaleY(0);
-    transform-origin: top;
-  }
-
-  50% {
-    transform: scaleY(1);
-    transform-origin: top;
-  }
-
-  51% {
-    transform-origin: bottom;
-  }
-
-  100% {
-    transform: scaleY(0);
-    transform-origin: bottom;
-  }
-}
-
-.scroll-cue {
-  animation: scroll-cue 2.4s ease-in-out infinite;
 }
 
 /* Dải ảnh khách hàng trượt vô tận (danh sách được nhân đôi) */
@@ -312,22 +245,12 @@ body {
   }
 
   .deco-float,
-  .lightbox-fade,
-  .hero-panel,
-  .hero-drift,
-  .hero-text,
-  .scroll-cue {
+  .lightbox-fade {
     animation: none;
   }
 
-  /* Không trình chiếu: chỉ giữ ảnh đầu tiên */
-  .hero-slide {
-    animation: none;
-    opacity: 0;
-  }
-
-  .hero-slide:first-child {
-    opacity: 1;
+  .usp-card {
+    transition: none;
   }
 
   /* Không tự trượt: cho người dùng vuốt ngang */

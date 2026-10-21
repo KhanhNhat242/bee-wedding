@@ -43,6 +43,7 @@ Website demo cho studio ảnh cưới **Bee Wedding** (Nam Định). Mọi việ
 - Màu dùng qua class token Tailwind: `bg-ivory`, `bg-beige`, `text-ink`, `text-ink-soft`, `text-gold`, `text-gold-deep` (chữ nhỏ màu vàng dùng `gold-deep` để đủ tương phản), `border-line`.
 - Khoảng cách section dùng class `.section` (80px mobile / 112px desktop); tiêu đề → nội dung dùng `SectionHeading` (mb-10/12). Nền section luân phiên ngà / be.
 - Ảnh hero: không dùng `priority` (deprecated ở Next 16) — dùng `fetchPriority` / `preload`.
+- Hoạ tiết hai bên section dùng `<SideOrnaments variant="..." />` (section cha cần `relative`; Hero không có). Section mới thì thêm variant line-art liên quan nội dung, nét vàng mảnh.
 - `RevealObserver` đặt ở **cuối mỗi page**, không đặt trong layout (tránh hydration mismatch).
 - Mặc định **Server Component**. Chỉ thêm `'use client'` cho component thật sự cần state/effect/event (menu mobile, lightbox, reveal observer). Không đặt `'use client'` ở `page.tsx` nếu không cần.
 - `next.config.ts` bật `cacheComponents` — đọc docs về cache/`use cache` trong `node_modules/next/dist/docs/` trước khi dùng dữ liệu động.
@@ -58,6 +59,7 @@ Website demo cho studio ảnh cưới **Bee Wedding** (Nam Định). Mọi việ
 
 ## 7. Responsive & truy cập
 - Mobile-first; kiểm tra ở 375px, 768px, 1280px. Không cuộn ngang.
+- Không để chữ "mồ côi" (1 từ rớt xuống dòng cuối): `globals.css` đã đặt `text-wrap: balance` cho tiêu đề và `pretty` cho đoạn văn. Không ghi đè bằng `text-wrap-normal` trừ khi có lý do; đoạn chữ ngắn đặt trong thẻ khác (`span`, `div`) thì thêm class `text-pretty` / `text-balance`.
 - Số điện thoại là link `tel:`; Zalo `https://zalo.me/0832571555`; link ngoài mở tab mới với `rel="noopener noreferrer"`.
 - Độ tương phản chữ đủ đọc trên nền be (chữ vàng `#B08948` chỉ dùng cho tiêu đề lớn/điểm nhấn, không cho đoạn văn nhỏ).
 
