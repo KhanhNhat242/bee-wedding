@@ -13,6 +13,7 @@ const Footer = () => {
             <span className="font-serif text-2xl tracking-[0.28em] text-ivory">BEE WEDDING</span>
           </div>
           <p className="mt-5 max-w-sm font-serif text-lg text-ivory/70 italic">{site.slogan}</p>
+          <p className="mt-8 text-xs tracking-[0.15em] text-ivory/45">© {site.fullName}</p>
         </div>
 
         <nav aria-label="Liên kết cuối trang">
@@ -70,11 +71,6 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-      </div>
-      <div className="border-t border-ivory/10">
-        <p className="mx-auto max-w-7xl px-5 py-6 text-xs tracking-[0.15em] text-ivory/45 md:px-8">
-          © {site.fullName}
-        </p>
       </div>
     </footer>
   )
